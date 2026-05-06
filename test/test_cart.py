@@ -6,7 +6,7 @@ def test_cart(login_in_driver):
         driver = login_in_driver
         
         #agretar producto al carrito
-        driver.find_element(By.CLASS_NAME,"btn_inventory ")[0] .click()
+        driver.find_elements(By.CLASS_NAME, "btn_inventory")[0].click()
 
         #verificar contador
         
@@ -16,11 +16,11 @@ def test_cart(login_in_driver):
         
         #obetener nombre del producto
         
-        product_name = driver.find_element(By.CLASS_NAME, "inventory_item_name")[0].text
+        product_name = driver.find_elements(By.CLASS_NAME, "inventory_item_name")[0].text
         
         #ir al carrito
         
-        driver.find_element(By.CLASS_NAME,"shopping_cart_link ")[0] .click()
+        driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
         
         cart_item = driver.find_element(By.CLASS_NAME,"inventory_item_name").text
         
