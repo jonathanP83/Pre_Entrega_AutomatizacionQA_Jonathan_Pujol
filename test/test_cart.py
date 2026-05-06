@@ -1,0 +1,29 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
+def test_cart(login_in_driver):
+        driver = login_in_driver
+        
+        #agretar producto al carrito
+        driver.find_element(By.CLASS_NAME,"btn_inventory ")[0] .click()
+
+        #verificar contador
+        
+        contador_cart = driver.find_element(By.CLASS_NAME,"shopping_cart_badge")
+        
+        assert contador_cart.text == "1", "el producto no se agrego correctamente"
+        
+        #obetener nombre del producto
+        
+        product_name = driver.find_element(By.CLASS_NAME, "inventory_item_name")[0].text
+        
+        #ir al carrito
+        
+        driver.find_element(By.CLASS_NAME,"shopping_cart_link ")[0] .click()
+        
+        cart_item = driver.find_element(By.CLASS_NAME,"inventory_item_name").text
+        
+        #verificar elemento agregado al carrito
+        
+        assert cart_item == product_name, "el producto agregado no coincide"
