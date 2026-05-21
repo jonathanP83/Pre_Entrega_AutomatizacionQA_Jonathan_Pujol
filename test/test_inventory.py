@@ -1,6 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pytest
+
+from page.inventory_page import InventoryPage
+from page.login_page import LoginPage
 # def test_login_validation(login_in_driver):
 #     try:
 #         driver = login_in_driver
@@ -14,26 +17,23 @@ import pytest
 #         print(f"Error en test_login: {e}")
 #         raise
 
-@pytest.fixture
-def driver_logged(login_in_driver):
-    driver = login_in_driver
-    return driver
-
-
 def test_inventory_title(driver_logged):
-    titulo = driver_logged.title
-    assert titulo == "Swag Labs", "el titulo de la pagina que se accese no es correcto"
-
+    inventory_page =InventoryPage(driver_logged)
+    
+    titulo = inventory_page.obtener_titulo()
+    assert titulo == "Swag Labs", "El titulo de la pagina no es correcto"
 
 def test_productos_visibles(driver_logged):
-    productos_visibles = driver_logged.find_elements(By.CLASS_NAME,"inventory_item")
-    assert len(productos_visibles) > 0 
+    inventory_page =InventoryPage(driver_logged)
     
+    productos = inventory_page.obtener_productos()
+    assert len(productos) > 0
+
 def test_ui_elements(driver_logged):
-    menu = driver_logged.find_element(By.ID,"react-burger-menu-btn")
-    filtro= driver_logged.find_element(By.CLASS_NAME,"product_sort_container")
+    inventory_page =InventoryPage(driver_logged)
+    
+    assert inventory_page.menu_visible(), "El menu no está presente en la pagina"
 
-    assert menu.is_displayed()
-    assert filtro.is_displayed()
+    assert inventory_page.filtro_visible(), "El filtro no está presente en la pagina"
 
-
+    

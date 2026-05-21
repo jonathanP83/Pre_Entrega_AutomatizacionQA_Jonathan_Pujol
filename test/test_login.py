@@ -36,7 +36,7 @@ def test_login_invalid_password(driver):
     error = login_page.get_error_password_message()
 
     #valido el mensaje erroneo, de lo contrario el password esta bien
-    assert "Epic sadface: Username and password do not match any user in this service"
+    assert "Epic sadface: Username and password do not match any user in this service" in error
 
     
 

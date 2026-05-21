@@ -2,8 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-def test_cart(login_in_driver):
-        driver = login_in_driver
+def test_cart(driver_logged):
+        driver = driver_logged.driver
         
         #agretar producto al carrito
         driver.find_elements(By.CLASS_NAME, "btn_inventory")[0].click()

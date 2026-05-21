@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
-
-#from utils.LoginPage import login
+from page.login_page import LoginPage
+from utils.data_reader import read_user_csv
 
 @pytest.fixture
 def driver():
@@ -9,14 +9,19 @@ def driver():
     options.add_argument("--incognito")
 
     driver = webdriver.Chrome(options= options)
-
-    yield driver
+    
+    #permite hacer una pausa e insertar el codigo que yo quiera
+    yield driver 
 
     driver.quit()
 
-
-# se borro comento para no perder, no lo usamos por que llamamos a driver en conftest
-# @pytest.fixture
-# def login_in_driver(driver):
-#     login(driver)
-#     return driver
+#funcion de logueo global
+@pytest.fixture
+def driver_logged(driver):
+    login_page = LoginPage(driver)
+    #llamo al csv y capturo el primer valor, el usuario correcto
+    user = read_user_csv()[0]
+    
+    login_page.login(user["username"],user["password"])
+    return driver
+    
