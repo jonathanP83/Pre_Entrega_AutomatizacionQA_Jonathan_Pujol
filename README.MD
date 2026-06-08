@@ -45,7 +45,7 @@ Pre_Entrega_AutomatizacionQA_Jonathan_Pujol/
 │   ├── users.csv          # Datos de usuarios para login
 │   └── products.json      # Datos de productos esperados en el carrito
 └── test/
-    ├── test_login.py        # Validación de login exitoso
+    ├── test_login.py        # Validación de login exitoso y login con contraseña inválida (con logger.info)
     ├── test_login_csv.py    # Login con datos parametrizados desde CSV
     ├── test_inventory.py    # Tests del inventario (título, productos, UI)
     ├── test_cart.py         # Test del carrito (agregar producto, contador, verificación)
@@ -71,7 +71,8 @@ Los reportes HTML se generan automáticamente gracias a la configuración en `py
 
 | Test | Descripción |
 |------|-------------|
-| `test_login_validation` | Verifica que el login redirige correctamente a `/inventory.html` |
+| `test_login_ok` | Verifica que el login redirige correctamente a `/inventory.html` con logger.info |
+| `test_login_invalid_password` | Verifica que el login con contraseña inválida muestra mensaje de error con logger.info |
 | `test_login_csv` | Login parametrizado con múltiples usuarios desde CSV |
 | `test_inventory_title` | Verifica que el título de la página es "Swag Labs" |
 | `test_productos_visibles` | Verifica que hay productos visibles en el catálogo |
@@ -99,9 +100,13 @@ El archivo `conftest.py` define dos fixtures que se comparten entre todos los te
 - **`read_user_csv()`**: Lee `data/users.csv` y retorna una lista de diccionarios con las credenciales
 - **`read_products_json()`**: Lee `data/products.json` y retorna una lista de productos esperados
 
-### Flujo de Ejecución
+## Flujo de Ejecución
 
 Cada test recibe el driver ya logueado gracias al fixture `driver_logged`. Esto permite que los tests se enfoquen únicamente en la funcionalidad que están probando sin repetir pasos de autenticación.
+
+## Logging
+
+Se utiliza `logger.info` en cada sección de las pruebas para registrar el progreso de ejecución y facilitar la depuración. Los mensajes de log se muestran en la consola y se incluyen en los reportes HTML generados por pytest.
 
 ## Notas
 
