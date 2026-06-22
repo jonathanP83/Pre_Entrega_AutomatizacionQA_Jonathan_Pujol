@@ -1,6 +1,7 @@
 import requests
 import pytest
 import pytest_check as check
+from utils.logger import logger
 
 #en la variable headers dedino los metadatos
 
@@ -31,6 +32,7 @@ headers = {
 @pytest.mark.smoke
 @pytest.mark.api
 def test_login_valido():
+    logger.info("Ejecutando test_login_valido - POST a reqres.in/api/login")
     #creamos body con usuario y contraseña valido
     body = {
         "email": "eve.holt@reqres.in",
@@ -74,6 +76,7 @@ def test_login_sin_email():
 
 @pytest.mark.api
 def test_create_user():
+    logger.info("Ejecutando test_create_user - POST a reqres.in/api/users")
     #creo usuario
     body = {
         "name": "jonathan",
@@ -103,6 +106,7 @@ def test_create_user():
 #test de eliminar el usuario, aca en el url voy a users, ejemplo le damos el 2    
 @pytest.mark.api
 def test_delete_user():
+    logger.info("Ejecutando test_delete_user - DELETE reqres.in/api/users/2")
     response = requests.delete("https://reqres.in/api/users/2",headers=headers)
 
 #verificamos con 204 que se borro

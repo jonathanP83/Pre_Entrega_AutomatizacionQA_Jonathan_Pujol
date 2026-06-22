@@ -1,0 +1,3 @@
+2026-06-21 22:08:38,526 INFO talento_tech - Ejecutando test_login_valido - POST a reqres.in/api/login
+2026-06-21 22:08:40,219 INFO talento_tech - Ejecutando test_create_user - POST a reqres.in/api/users
+2026-06-21 22:08:40,920 INFO talento_tech - Ejecutando test_delete_user - DELETE reqres.in/api/users/2

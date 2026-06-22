@@ -1,0 +1,5 @@
+2026-06-21 22:08:18,882 INFO talento_tech - Ejecutando test_login_valido - POST a reqres.in/api/login
+2026-06-21 22:08:27,859 INFO talento_tech - inicializando el driver para test login_ok
+2026-06-21 22:08:27,859 INFO talento_tech - inicialidanzo los datos de entrada para la prueba
+2026-06-21 22:08:28,431 INFO talento_tech - iniciando sesion...
+2026-06-21 22:08:28,449 INFO talento_tech - sesion iniciada correctamente

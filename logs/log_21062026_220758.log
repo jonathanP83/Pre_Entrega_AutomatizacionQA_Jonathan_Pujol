@@ -1,0 +1,9 @@
+2026-06-21 22:07:58,965 INFO talento_tech - inicializando el driver para test login_ok
+2026-06-21 22:07:58,965 INFO talento_tech - inicialidanzo los datos de entrada para la prueba
+2026-06-21 22:07:59,620 INFO talento_tech - iniciando sesion...
+2026-06-21 22:07:59,629 INFO talento_tech - sesion iniciada correctamente
+2026-06-21 22:08:02,528 INFO talento_tech - inicializando el driver para test login_invalid_password
+2026-06-21 22:08:02,528 INFO talento_tech - ingresando credenciales invalidas
+2026-06-21 22:08:03,095 INFO talento_tech - obteniendo mensaje de error
+2026-06-21 22:08:03,114 INFO talento_tech - validando mensaje de error
+2026-06-21 22:08:03,114 INFO talento_tech - validacion completada
