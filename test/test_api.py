@@ -82,7 +82,7 @@ def test_create_user():
     body = {
         "name": "jonathan",
         "email": "jonathan@hotmail.com",
-        "password": "123456"
+        "password": "123456*"
         
     }
     #se lo paso a la api
