@@ -5,6 +5,7 @@ from utils.logger import logger
 
 #en la variable headers dedino los metadatos
 
+
 headers = {
     "x-api-key" : "pub_119a3c0639b47e5d4e32202f096674a01cad05389ba439ea2558977ace3dd0fa"
     
