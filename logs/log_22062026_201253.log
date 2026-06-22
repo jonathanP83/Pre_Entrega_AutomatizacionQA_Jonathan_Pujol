@@ -1,0 +1,15 @@
+2026-06-22 20:12:53,381 INFO talento_tech - Ejecutando test_login_valido - POST a reqres.in/api/login
+2026-06-22 20:12:57,156 INFO talento_tech - Ejecutando test_create_user - POST a reqres.in/api/users
+2026-06-22 20:12:58,432 INFO talento_tech - Ejecutando test_delete_user - DELETE reqres.in/api/users/2
+2026-06-22 20:13:11,859 INFO talento_tech - Iniciando test_cart_json - cargando productos desde JSON
+2026-06-22 20:13:11,860 INFO talento_tech - Agregando 6 productos al carrito
+2026-06-22 20:13:13,369 INFO talento_tech - Navegando al carrito y validando productos
+2026-06-22 20:13:39,665 INFO talento_tech - inicializando el driver para test login_ok
+2026-06-22 20:13:39,665 INFO talento_tech - inicialidanzo los datos de entrada para la prueba
+2026-06-22 20:13:42,054 INFO talento_tech - iniciando sesion...
+2026-06-22 20:13:42,063 INFO talento_tech - sesion iniciada correctamente
+2026-06-22 20:13:46,963 INFO talento_tech - inicializando el driver para test login_invalid_password
+2026-06-22 20:13:46,964 INFO talento_tech - ingresando credenciales invalidas
+2026-06-22 20:13:49,832 INFO talento_tech - obteniendo mensaje de error
+2026-06-22 20:13:49,950 INFO talento_tech - validando mensaje de error
+2026-06-22 20:13:49,950 INFO talento_tech - validacion completada
