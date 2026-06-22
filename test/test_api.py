@@ -1,4 +1,6 @@
 import requests
+import pytest
+import pytest_check as check
 
 #en la variable headers dedino los metadatos
 
@@ -26,6 +28,8 @@ headers = {
 #print(response.status_code)
 #print(response.json())
 
+@pytest.mark.smoke
+@pytest.mark.api
 def test_login_valido():
     #creamos body con usuario y contraseña valido
     body = {
@@ -38,6 +42,7 @@ def test_login_valido():
     #hacemos la validacion si da 200 esta correcto
     assert response.status_code == 200
 
+@pytest.mark.api
 def test_login_sin_password():    
 
     #creamos body con usuario y SIN contraseña
@@ -50,7 +55,24 @@ def test_login_sin_password():
     
     #hacemos la validacion si da 400 esta correcto por que no tiene la contraseña
     assert response.status_code == 400
+    body_response = response.json()
+    assert body_response["error"] == "Missing password"
 
+@pytest.mark.api
+def test_login_sin_email():
+    #creamos body SIN email
+    body = {
+        "password": "cityslicka"
+    }
+    #llamamos a la api, pasamos headers metadatos y json body
+    response = requests.post("https://reqres.in/api/login", headers=headers, json=body)
+    
+    #hacemos la validacion si da 400 esta correcto por que no tiene el email
+    assert response.status_code == 400
+    body_response = response.json()
+    assert body_response["error"] == "Missing email or username"
+
+@pytest.mark.api
 def test_create_user():
     #creo usuario
     body = {
@@ -69,18 +91,24 @@ def test_create_user():
     assert response.status_code == 201
     #valido los datos que estan en data , si quiero verlos tiro un print son -s al correr el test
     
+    email = data.get("email", "")
+    password = body.get("password", "")
+    check.is_true(email.count("@") == 1, f"El email no tiene un solo @: {email}")
+    check.is_true("*" in password, f"El password no contiene *: {password}")
     assert data["name"] == body["name"]
     assert data["email"] == body["email"]
     #valido tiempo de respuesta que toma hacer la respuesta
     assert response.elapsed.total_seconds() < 1
 
 #test de eliminar el usuario, aca en el url voy a users, ejemplo le damos el 2    
+@pytest.mark.api
 def test_delete_user():
     response = requests.delete("https://reqres.in/api/users/2",headers=headers)
 
 #verificamos con 204 que se borro
     assert response.status_code == 204
 
+@pytest.mark.api
 def test_get_user():
     response = requests.get("https://reqres.in/api/users/2",headers=headers)
 

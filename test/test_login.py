@@ -6,6 +6,7 @@
 #llamo a login page de page
 from page.login_page import LoginPage
 from utils.logger import logger
+import pytest
 
 # funcion vieja
 # def test_login_validation(login_in_driver):
@@ -17,6 +18,7 @@ from utils.logger import logger
 #         print(f"Error en test_login: {e}")
 #         raise
 
+@pytest.mark.smoke
 def test_login_ok(driver):
     
     #agrego los logger en cada seccion de las pruebas
@@ -45,12 +47,11 @@ def test_login_invalid_password(driver):
     
     #creo variable error, y traigo el resultado del error de login_page
     logger.info("obteniendo mensaje de error")
-    error = login_page.get_error_password_message()
+    error = login_page.get_error_message()
 
     #valido el mensaje erroneo, de lo contrario el password esta bien
-    #assert "Epic sadface: Username and password do not match any user in this service" in error
+    assert "Epic sadface: Username and password do not match any user in this service" in error
     logger.info("validando mensaje de error")
-    assert error == "hola"
     logger.info("validacion completada")
 
     

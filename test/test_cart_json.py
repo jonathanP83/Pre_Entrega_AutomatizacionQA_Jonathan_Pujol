@@ -1,12 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 import pytest
 from page.inventory_page import InventoryPage
 from page.cart_page import CartPage 
 from utils.data_reader import read_products_json
 
-def test_car_json(driver_logged):
+def test_cart_json(driver_logged):
     inventory_page = InventoryPage (driver_logged)
     cart_page = CartPage(driver_logged)
     

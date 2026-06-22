@@ -26,5 +26,5 @@ logging.basicConfig(
     force=True
 )
 #llamo al logger y lo creo
-logger = logging.getLogger("talento tech")
+logger = logging.getLogger("talento_tech")
 

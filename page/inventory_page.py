@@ -49,6 +49,7 @@ class InventoryPage:
             #si es correcto, lo agrego al carrito
             if nombre == nombre_producto_json:
                 producto.find_element(*self.add_to_cart_buttons).click()
+                break
                 
                 
         

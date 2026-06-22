@@ -1,9 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
+import pytest
 
+@pytest.mark.smoke
 def test_cart(driver_logged):
-        driver = driver_logged.driver
+        driver = driver_logged
         
         #agretar producto al carrito
         driver.find_elements(By.CLASS_NAME, "btn_inventory")[0].click()
