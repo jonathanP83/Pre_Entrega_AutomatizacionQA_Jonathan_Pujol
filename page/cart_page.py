@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 class CartPage:
     def __init__(self, driver):
         self.driver = driver
+        # Seleccion por clase: los items del carrito comparten estilo en SauceDemo
         self.cart_items = (By.CLASS_NAME, "cart_item")
         self.cart_items_name = (By.CLASS_NAME, "inventory_item_name")
         self.cart_items_price = (By.CLASS_NAME, "inventory_item_price")

@@ -1,22 +1,6 @@
-#ya no usamos mas selenium importamos directamente las cosas
-#from selenium import webdriver
-#from selenium.webdriver.common.by import By
-#from selenium.webdriver.common.keys import Keys
-
-#llamo a login page de page
 from page.login_page import LoginPage
 from utils.logger import logger
 import pytest
-
-# funcion vieja
-# def test_login_validation(login_in_driver):
-#     try:
-#         driver = login_in_driver
-
-#         assert "/inventory.html" in driver.current_url, "No se redirigio al inventario"
-#     except Exception as e:
-#         print(f"Error en test_login: {e}")
-#         raise
 
 @pytest.mark.smoke
 def test_login_ok(driver):

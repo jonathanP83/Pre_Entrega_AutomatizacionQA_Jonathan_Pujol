@@ -4,6 +4,7 @@ import pytest
 
 @pytest.mark.smoke
 def test_cart(driver_logged):
+        # driver_logged ya realiza el login automaticamente
         driver = driver_logged
         
         #agretar producto al carrito
